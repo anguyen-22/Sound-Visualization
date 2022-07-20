@@ -2,6 +2,7 @@
 
 Collaboration between Arthur Nguyen and Michael Huang.
 
-Final Product: [Sound Vis](https://michaelyhuang23.github.io/Sound-Vis/). Note: You need to click on the blank screen.
+Final Product: [Sound Vis](https://michaelyhuang23.github.io/Sound-Vis/) 
+NOTE: You need to click on the blank screen.
 
 
