@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<title>Spectrogram</title>
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+    position: inherit;
+	} 
+	#Speech{
+		background-color: black;
+		height: 20%;
+		color: lightcyan;
+		text-align: center;
+		font-size: 3em;
+	}
+	canvas {
+		position: absolute;
+		z-index: 100;
+	}
+	#coord{
+		color: #EEEEEE;
+	}
+	#chart{
+		width: 15%;
+		height: 15%;
+		left: 85%;
+	}
+</style>
+</head>
+<body>
+<main>
+	<div id="Speech"></div>
+  	<div id ="Spectrogram"></div>
+  	<canvas width="1300" height="783" id="coord"></canvas>
+
+	<div>
+		<canvas id="chart"></canvas>
+	</div>
+</main>
+</body>
+<script src="three.min.js"></script>
+
+<script type="x-shader/x-vertex" id="vertexshader">
+	attribute float displacement;
+	uniform vec3 vLut[256];
+	varying vec3 vColor;
+	void main(){
+		int index = int(displacement);
+		vColor = vLut[index];
+		vec3 newPosition = position + normal*displacement/15.5;
+		gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition,1.0);
+	}
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentshader">
+	varying vec3 vColor;
+	void main(){
+		gl_FragColor = vec4(vColor,1.0);
+	}
+</script>
+
+<script src="chart.js"></script>
+<script src="charting.js"></script>
+<script src="coordinate.js"></script>
+<script src="speech.js"></script>
+<script src="setup.js"></script>
+      
+</html>
